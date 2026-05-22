@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobayed Hossain Fahim - Portfolio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark: #0d0f14;
+            --dark2: #161a23;
+            --card-bg: #1c2130;
+            --accent: #4f8ef7;
+            --accent2: #38d9a9;
+            --text: #e2e8f0;
+            --muted: #8892a4;
+            --border: rgba(255,255,255,0.07);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            padding-top: 70px;
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--dark);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        h1,h2,h3,h4,h5 { font-family: 'Syne', sans-serif; }
+
+        /* ── Navbar ── */
+        .navbar {
+            background-color: rgba(13,15,20,0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 1px 0 var(--border);
+        }
+        .navbar-brand { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.25rem; color: var(--accent) !important; letter-spacing: -0.5px; }
+        .navbar-nav .nav-link { color: var(--muted) !important; padding: 0.5rem 0.8rem; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; letter-spacing: 0.02em; }
+        .navbar-nav .nav-link:hover { color: var(--text) !important; }
+        @media (max-width:992px) { .navbar-collapse { background-color: var(--dark); padding: 10px 0; } }
+
+        /* ── Section base ── */
+        section { padding: 80px 0; }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 50px;
+            letter-spacing: -0.5px;
+            position: relative;
+        }
+        .section-title span { color: var(--accent); }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 48px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            border-radius: 2px;
+        }
+
+        /* ── About ── */
+        #about { background: var(--dark2); }
+        .about-section { text-align: center; }
+        .about-img {
+            width: 160px; height: 160px;
+            border-radius: 50%;
+            margin-bottom: 24px;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 30px rgba(79,142,247,0.2);
+        }
+        .about-name { font-size: 2.4rem; font-weight: 800; margin-bottom: 6px; letter-spacing: -1px; }
+        .about-role { color: var(--accent); font-weight: 500; font-size: 1rem; margin-bottom: 20px; letter-spacing: 0.05em; text-transform: uppercase; }
+        .about-text { font-size: 1rem; color: var(--muted); max-width: 640px; margin: 0 auto 24px; }
+        .about-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 10px; }
+        .about-badge {
+            background: rgba(79,142,247,0.1);
+            border: 1px solid rgba(79,142,247,0.25);
+            color: var(--accent);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 500;
+        }
+
+        /* ── Timeline (Education & Experience shared) ── */
+        .timeline { position: relative; padding-left: 30px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 6px; bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent), var(--accent2), transparent);
+            border-radius: 2px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 36px;
+            padding: 24px 26px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .timeline-item:hover { border-color: rgba(79,142,247,0.35); transform: translateX(4px); }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -37px; top: 28px;
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 2px solid var(--dark);
+            box-shadow: 0 0 0 3px rgba(79,142,247,0.2);
+        }
+        .timeline-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; color: var(--text); }
+        .timeline-sub { font-size: 0.9rem; color: var(--accent); font-weight: 500; margin-bottom: 4px; }
+        .timeline-date {
+            display: inline-block;
+            font-size: 0.78rem;
+            color: var(--muted);
+            background: rgba(255,255,255,0.05);
+            padding: 2px 10px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+        .timeline-body { font-size: 0.93rem; color: var(--muted); }
+        .timeline-body ul { padding-left: 18px; margin-top: 8px; }
+        .timeline-body ul li { margin-bottom: 4px; }
+        .badge-tag {
+            display: inline-block;
+            background: rgba(56,217,169,0.1);
+            border: 1px solid rgba(56,217,169,0.2);
+            color: var(--accent2);
+            font-size: 0.75rem;
+            padding: 2px 10px;
+            border-radius: 10px;
+            margin: 3px 3px 0 0;
+        }
+
+        /* ── Section backgrounds ── */
+        #education { background: var(--dark); }
+        #experience { background: var(--dark2); }
+        #certifications { background: var(--dark); }
+        #skills { background: var(--dark2); }
+        #projects { background: var(--dark); }
+        #research-projects { background: var(--dark2); }
+        #extracurricular { background: var(--dark); }
+        #contact { background: var(--dark2); }
+
+        /* ── Skills ── */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+        .skill-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 16px;
+            text-align: center;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .skill-item:hover { border-color: rgba(79,142,247,0.4); transform: translateY(-3px); }
+        .skill-icon { font-size: 2rem; margin-bottom: 10px; }
+        .skill-name { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+        .skill-level { font-size: 0.75rem; color: var(--muted); margin-top: 3px; }
+
+        /* ── Skills category header ── */
+        .skill-category { font-size: 0.78rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin: 28px 0 14px; }
+
+        /* ── Cards (projects) ── */
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: border-color 0.2s, transform 0.2s;
+            height: 100%;
+        }
+        .project-card:hover { border-color: rgba(79,142,247,0.4); transform: translateY(-4px); }
+        .project-img { width: 100%; height: 180px; object-fit: cover; background: var(--dark); }
+        .project-placeholder {
+            width: 100%; height: 180px;
+            background: linear-gradient(135deg, #1c2130 0%, #232c3e 100%);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2.5rem; color: var(--muted);
+        }
+        .project-body { padding: 18px; }
+        .project-title { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+        .project-desc { font-size: 0.88rem; color: var(--muted); }
+
+        /* ── Certifications ── */
+        .cert-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 16px;
+            display: flex; align-items: center; gap: 20px;
+            transition: border-color 0.2s;
+        }
+        .cert-item:hover { border-color: rgba(79,142,247,0.35); }
+        .cert-icon { font-size: 1.8rem; min-width: 40px; text-align: center; }
+        .cert-title { font-size: 1rem; font-weight: 700; margin-bottom: 3px; }
+        .cert-org { font-size: 0.88rem; color: var(--accent); }
+        .cert-date { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+
+        /* ── Extra-curricular ── */
+        .activity-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 14px;
+            transition: border-color 0.2s;
+        }
+        .activity-item:hover { border-color: rgba(56,217,169,0.3); }
+        .activity-title { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+        .activity-duration { font-size: 0.8rem; color: var(--muted); }
+        .activity-description { font-size: 0.9rem; color: var(--muted); margin-top: 6px; }
+
+        /* ── Contact ── */
+        #contact { text-align: center; }
+        .contact-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .contact-details { margin-bottom: 24px; }
+        .contact-details p { margin: 10px 0; font-size: 1rem; color: var(--muted); }
+        .contact-details p i { color: var(--accent); margin-right: 10px; width: 18px; }
+        .contact-details a { color: var(--muted); text-decoration: none; }
+        .contact-details a:hover { color: var(--text); }
+        .social-icons { display: flex; justify-content: center; gap: 16px; }
+        .social-icon {
+            width: 44px; height: 44px;
+            border-radius: 10px;
+            background: rgba(79,142,247,0.1);
+            border: 1px solid rgba(79,142,247,0.2);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--accent);
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .social-icon:hover { background: rgba(79,142,247,0.2); transform: translateY(-2px); color: var(--accent); }
+
+        /* ── Soft skills ── */
+        .soft-skills-row { display: flex; flex-wrap: wrap; gap: 10px; }
+        .soft-skill {
+            background: rgba(56,217,169,0.08);
+            border: 1px solid rgba(56,217,169,0.2);
+            color: var(--accent2);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#about">Jobayed Hossain Fahim</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+                <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="#extracurricular">Activities</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- About -->
+<section id="about">
+    <div class="container">
+        <div class="about-section">
+            <img src="images/about/1.jpg" alt="Jobayed Hossain Fahim" class="about-img">
+            <div class="about-name">Jobayed Hossain Fahim</div>
+            <div class="about-role">IT Associate · Data Analyst · AI Enthusiast</div>
+            <p class="about-text">
+                CSE graduate with hands-on experience in AI, data analytics, and ERP systems. 
+                Passionate about responsible AI, natural language processing, and building 
+                data-driven solutions that create real-world impact.
+            </p>
+            <div class="about-badges">
+                <span class="about-badge"><i class="fas fa-map-marker-alt mr-1"></i> Chattogram, Bangladesh</span>
+                <span class="about-badge"><i class="fas fa-envelope mr-1"></i> fahim8k@gmail.com</span>
+                <span class="about-badge"><i class="fas fa-phone mr-1"></i> +880 1868-457724</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Work Experience -->
+<section id="experience">
+    <div class="container">
+        <h2 class="section-title">Work <span>Experience</span></h2>
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <div class="timeline-title">IT Associate — ERP Support</div>
+                <div class="timeline-sub">Niret Infotech</div>
+                <span class="timeline-date"><i class="fas fa-calendar-alt mr-1"></i> August 2025 – Present</span>
+                <div class="timeline-body">
+                    <ul>
+                        <li>Deliver frontline support and configuration for ERP systems, resolving client issues and optimizing workflows.</li>
+                        <li>Build and customize reports and interactive forms by writing and executing Oracle SQL queries.</li>
+                        <li>Manage and interact with live databases daily, enhancing data integrity and real-time problem-solving skills.</li>
+                    </ul>
+                    <span class="badge-tag">ERP Systems</span>
+                    <span class="badge-tag">Oracle SQL</span>
+                    <span class="badge-tag">Database Management</span>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-title">Data Annotation Intern</div>
+                <div class="timeline-sub">Apprentice AI, Dhaka</div>
+                <span class="timeline-date"><i class="fas fa-calendar-alt mr-1"></i> June 2024 – August 2024</span>
+                <div class="timeline-body">
+                    <ul>
+                        <li>Supported development and deployment with hands-on experience in model training, evaluation, and tool application.</li>
+                        <li>Enhanced annotation pipelines to improve model accuracy and process efficiency.</li>
+                    </ul>
+                    <span class="badge-tag">Data Annotation</span>
+                    <span class="badge-tag">Model Training</span>
+                    <span class="badge-tag">AI Evaluation</span>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-title">Artificial Intelligence Intern</div>
+                <div class="timeline-sub">Mubin Ltd</div>
+                <span class="timeline-date"><i class="fas fa-calendar-alt mr-1"></i> May 2023 – August 2023</span>
+                <div class="timeline-body">
+                    <ul>
+                        <li>Gained hands-on experience in developing AI models and fine-tuning algorithms to optimize performance.</li>
+                        <li>Collaborated on applied AI projects within a professional industry setting.</li>
+                    </ul>
+                    <span class="badge-tag">Machine Learning</span>
+                    <span class="badge-tag">Algorithm Fine-tuning</span>
+                    <span class="badge-tag">Python</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Education -->
+<section id="education">
+    <div class="container">
+        <h2 class="section-title">Academic <span>Background</span></h2>
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <div class="timeline-title">Bachelor of Science — Computer Science & Engineering</div>
+                <div class="timeline-sub">Daffodil International University, Dhaka</div>
+                <span class="timeline-date"><i class="fas fa-calendar-alt mr-1"></i> January 2019 – February 2024</span>
+                <div class="timeline-body">
+                    <p>CGPA: 2.96 / 4.0 &nbsp;·&nbsp; 74% cumulative average</p>
+                    <p>Key modules: C, Java, Python, C++, PHP · Statistics & Probability · Artificial Intelligence · Big Data</p>
+                    <p><strong>Thesis:</strong> Factors Influencing Ride-Sharing Services — research using the ASE model to study user behavior and adoption patterns.</p>
+                    <span class="badge-tag">AI</span>
+                    <span class="badge-tag">Big Data</span>
+                    <span class="badge-tag">Python</span>
+                    <span class="badge-tag">Research</span>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-title">Higher Secondary Certificate (HSC) — Science</div>
+                <div class="timeline-sub">Islamia Degree College, Chattogram</div>
+                <span class="timeline-date"><i class="fas fa-calendar-alt mr-1"></i> 2018</span>
+                <div class="timeline-body">
+                    <p>GPA: 3.17 / 5.00 &nbsp;·&nbsp; ICT · Physics · Mathematics</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-title">Secondary School Certificate (SSC) — Science</div>
+                <div class="timeline-sub">Ayub Bibi City Corporation School & College</div>
+                <span class="timeline-date"><i class="fas fa-calendar-alt mr-1"></i> 2016</span>
+                <div class="timeline-body">
+                    <p>GPA: 4.11 / 5.00 &nbsp;·&nbsp; Physics · Chemistry · Mathematics</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Skills -->
+<section id="skills">
+    <div class="container">
+        <h2 class="section-title">Technical <span>Skills</span></h2>
+
+        <p class="skill-category">Programming Languages</p>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <div class="skill-icon">🐍</div>
+                <div class="skill-name">Python</div>
+                <div class="skill-level">Proficient</div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">☕</div>
+                <div class="skill-name">Java</div>
+                <div class="skill-level">Intermediate</div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">⚙️</div>
+                <div class="skill-name">C / C++</div>
+                <div class="skill-level">Intermediate</div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">🐘</div>
+                <div class="skill-name">PHP</div>
+                <div class="skill-level">Familiar</div>
+            </div>
+        </div>
+
+        <p class="skill-category">Data & Analytics</p>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <div class="skill-icon">📊</div>
+                <div class="skill-name">Power BI</div>
+                <div class="skill-level">Proficient</div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">🗄️</div>
+                <div class="skill-name">MySQL / Oracle SQL</div>
+                <div class="skill-level">Proficient</div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">📈</div>
+                <div class="skill-name">Data Analysis</div>
+                <div class="skill-level">Proficient</div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">📉</div>
+                <div class="skill-name">Excel</div>
+                <div class="skill-level">Proficient</div>
+            </div>
+        </div>
+
+        <p class="skill-category">AI & Machine Learning</p>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <div class="skill-icon">🧠</div>
+                <div class="skill-name">Deep Learning (CNN)</div>
+                <div class="skill-level">Intermediate</div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">🤖</div>
+                <div class="skill-name">AI Model Dev.</div>
+                <div class="skill-level">Intermediate</div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">💬</div>
+                <div class="skill-name">NLP Research</div>
+                <div class="skill-level">Intermediate</div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">🔬</div>
+                <div class="skill-name">Data Science</div>
+                <div class="skill-level">Intermediate</div>
+            </div>
+        </div>
+
+        <p class="skill-category">Tools & DevOps</p>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <div class="skill-icon">🐳</div>
+                <div class="skill-name">Docker</div>
+                <div class="skill-level">Intermediate</div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">🔁</div>
+                <div class="skill-name">CI/CD Pipelines</div>
+                <div class="skill-level">Intermediate</div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">🎨</div>
+                <div class="skill-name">Adobe XD</div>
+                <div class="skill-level">Intermediate</div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">🖥️</div>
+                <div class="skill-name">OpenGL / C++</div>
+                <div class="skill-level">Intermediate</div>
+            </div>
+        </div>
+
+        <p class="skill-category">Soft Skills</p>
+        <div class="soft-skills-row">
+            <span class="soft-skill">Problem Solving</span>
+            <span class="soft-skill">Analytical Thinking</span>
+            <span class="soft-skill">Effective Communication</span>
+            <span class="soft-skill">Time Management</span>
+            <span class="soft-skill">Team Collaboration</span>
+        </div>
+    </div>
+</section>
+
+<!-- Certifications -->
+<section id="certifications">
+    <div class="container">
+        <h2 class="section-title">Certifications &amp; <span>Achievements</span></h2>
+
+        <div class="cert-item">
+            <div class="cert-icon">🏆</div>
+            <div>
+                <div class="cert-title">Data Analyst Bootcamp Certificate</div>
+                <div class="cert-org">Industry-Level Certification — Excel, Power BI, MySQL, Python</div>
+                <div class="cert-date">5-Month Rigorous Bootcamp</div>
+            </div>
+        </div>
+
+        <div class="cert-item">
+            <div class="cert-icon">🎖️</div>
+            <div>
+                <div class="cert-title">Take-Off Programming Contest</div>
+                <div class="cert-org">Department of CSE, Daffodil International University</div>
+                <div class="cert-date">Competitive Programming Achievement</div>
+            </div>
+        </div>
+
+        <div class="cert-item">
+            <div class="cert-icon">📜</div>
+            <div>
+                <div class="cert-title">CSE Diploma — A+ Grade</div>
+                <div class="cert-org">Youth Development Academy (YDA)</div>
+                <div class="cert-date">6-Month Diploma Program</div>
+            </div>
+        </div>
+
+        <div class="cert-item">
+            <div class="cert-icon">🔐</div>
+            <div>
+                <div class="cert-title">Cybersecurity for Engineers</div>
+                <div class="cert-org">United International University</div>
+                <div class="cert-date">August 2023 – September 2023</div>
+            </div>
+            <div class="certification-image-link ml-auto">
+                <a href="images/projects/6.jpg" target="_blank">
+                    <img src="images/projects/6.jpg" alt="Cybersecurity Certificate" style="max-width:80px;border-radius:8px;border:1px solid var(--border);">
+                </a>
+            </div>
+        </div>
+
+        <div class="cert-item">
+            <div class="cert-icon">💼</div>
+            <div>
+                <div class="cert-title">21st Century Employability Skilling Program</div>
+                <div class="cert-org">Professional Development</div>
+                <div class="cert-date">August 2023</div>
+            </div>
+            <div class="certification-image-link ml-auto">
+                <a href="images/projects/7.jpg" target="_blank">
+                    <img src="images/projects/7.jpg" alt="Employability Certificate" style="max-width:80px;border-radius:8px;border:1px solid var(--border);">
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Projects -->
+<section id="projects">
+    <div class="container">
+        <h2 class="section-title">Featured <span>Projects</span></h2>
+        <div class="row">
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="project-card">
+                    <div class="project-placeholder">🌉</div>
+                    <div class="project-body">
+                        <div class="project-title">Padma Bridge Scenario</div>
+                        <p class="project-desc">A Computer Graphics simulation of the Padma Bridge developed with C++ and OpenGL.</p>
+                        <span class="badge-tag">C++</span>
+                        <span class="badge-tag">OpenGL</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="project-card">
+                    <div class="project-placeholder">🌾</div>
+                    <div class="project-body">
+                        <div class="project-title">Rice Leaf Disease Detection</div>
+                        <p class="project-desc">Deep learning approach for crop health monitoring using Convolutional Neural Networks (CNN).</p>
+                        <span class="badge-tag">Python</span>
+                        <span class="badge-tag">CNN</span>
+                        <span class="badge-tag">Deep Learning</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="project-card">
+                    <div class="project-placeholder">🐳</div>
+                    <div class="project-body">
+                        <div class="project-title">Containerized CI/CD Pipeline</div>
+                        <p class="project-desc">Containerized an application using Docker and established a CI/CD pipeline to auto-build and push images on every change.</p>
+                        <span class="badge-tag">Docker</span>
+                        <span class="badge-tag">CI/CD</span>
+                        <span class="badge-tag">DevOps</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="project-card">
+                    <div class="project-placeholder">🏠</div>
+                    <div class="project-body">
+                        <div class="project-title">Bachelor Flat Rentals Prototype</div>
+                        <p class="project-desc">Business application prototype designed in Adobe XD to enhance user experience and streamline rental processes.</p>
+                        <span class="badge-tag">Adobe XD</span>
+                        <span class="badge-tag">UX Design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Research Projects -->
+<section id="research-projects">
+    <div class="container">
+        <h2 class="section-title">Research <span>Work</span></h2>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="project-card">
+                    <div class="project-placeholder">🚗</div>
+                    <div class="project-body">
+                        <div class="project-title">Factors Influencing Ride-Sharing Services</div>
+                        <p class="project-desc">Academic thesis: used the ASE model to investigate user behavior and technology adoption patterns in ride-sharing platforms.</p>
+                        <span class="badge-tag">ASE Model</span>
+                        <span class="badge-tag">User Research</span>
+                        <span class="badge-tag">Thesis</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="project-card">
+                    <div class="project-placeholder">📱</div>
+                    <div class="project-body">
+                        <div class="project-title">Factors Influencing Adoption of Mobile Learning</div>
+                        <p class="project-desc">Investigated how technology, accessibility, and user behavior shape mobile learning adoption.</p>
+                        <span class="badge-tag">EdTech</span>
+                        <span class="badge-tag">UX Research</span>
+                        <span class="badge-tag">Research Assistant</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Extra-Curricular -->
+<section id="extracurricular">
+    <div class="container">
+        <h2 class="section-title">Extra-Curricular <span>Activities</span></h2>
+        <div class="activity-item">
+            <div class="activity-title">Volunteer Associate Member — ShopnoBuzz Foundation</div>
+            <div class="activity-duration">January 2022 – February 2024</div>
+            <div class="activity-description">Actively organized outreach programs and supported underprivileged communities.</div>
+        </div>
+        <div class="activity-item">
+            <div class="activity-title">ICPC Dhaka Regional Contest Participant</div>
+            <div class="activity-duration">2019</div>
+        </div>
+        <div class="activity-item">
+            <div class="activity-title">Chemistry and Biology Olympiad Participant</div>
+            <div class="activity-duration">2018 / 2019</div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+    <div class="container">
+        <h2 class="section-title">Get in <span>Touch</span></h2>
+        <div class="contact-card">
+            <div class="contact-details">
+                <p><i class="fas fa-envelope"></i><a href="mailto:fahim8k@gmail.com">fahim8k@gmail.com</a></p>
+                <p><i class="fas fa-phone"></i><a href="tel:+8801868457724">+880 1868-457724</a></p>
+                <p><i class="fas fa-map-marker-alt"></i> Chattogram, Bangladesh</p>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/jobayedhossain0/" target="_blank" class="social-icon" title="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://x.com/Fahim03574120" target="_blank" class="social-icon" title="Twitter / X">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://github.com/fahim8k" target="_blank" class="social-icon" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.9.5/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
